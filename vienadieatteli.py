@@ -1,23 +1,33 @@
 from tkinter import *
-#from PIL import imageTk, Image
+from PIL import ImageTk, Image
 import random 
 from tkinter import messagebox
 gamewindow=Tk()
 gamewindow.title("Vienādie attēli")
 
+myimg1=ImageTk.PhotoImage(Image.open("7.jpg"))
+myimg2=ImageTk.PhotoImage(Image.open("2.jpg"))
+myimg3=ImageTk.PhotoImage(Image.open("3.jpg"))
+myimg4=ImageTk.PhotoImage(Image.open("4.jpg"))
+myimg5=ImageTk.PhotoImage(Image.open("5.jpg"))
+myimg6=ImageTk.PhotoImage(Image.open("6.jpg"))
+
+bgImg=ImageTk.PhotoImage(Image.open("8.jpg"))
 
 
-btn0=Button(width=20, height=10)
-btn1=Button(width=20, height=10)
-btn2=Button(width=20, height=10)
-btn3=Button(width=20, height=10)
-btn4=Button(width=20, height=10)
-btn5=Button(width=20, height=10)
-btn6=Button(width=20, height=10)
-btn7=Button(width=20, height=10)
-btn8=Button(width=20, height=10)
-btn9=Button(width=20, height=10)
-btn10=Button(width=20, height=10)
+
+btn0 = Button(width=200, height=200, image=bgImg)
+btn1 = Button(width=200, height=200, image=bgImg)
+btn2 = Button(width=200, height=200, image=bgImg)
+btn3 = Button(width=200, height=200, image=bgImg)
+btn4 = Button(width=200, height=200, image=bgImg)
+btn5 = Button(width=200, height=200, image=bgImg)
+btn6 = Button(width=200, height=200, image=bgImg)
+btn7 = Button(width=200, height=200, image=bgImg)
+btn8 = Button(width=200, height=200, image=bgImg)
+btn9 = Button(width=200, height=200, image=bgImg)
+btn10 = Button(width=200, height=200, image=bgImg)
+
 
 btn0.grid(row=0, column=0)
 btn1.grid(row=0, column=1)
