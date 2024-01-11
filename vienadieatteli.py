@@ -5,6 +5,8 @@ from tkinter import messagebox
 gamewindow=Tk()
 gamewindow.title("Vienādie attēli")
 
+
+
 count=0
 correctanswers=0
 answers=[]
@@ -77,8 +79,16 @@ btn9.grid(row=1, column=4)
 
 
 
+galvenaIzvelne=Menu(gamewindow)
+gamewindow.config(menu=galvenaIzvelne)
 
+opcijas=Menu(galvenaIzvelne, tearoff=False)
+galvenaIzvelne.add_cascade(label="Opcijas", menu=opcijas)
 
+opcijas.add_command(label="Jauna spēle",command=reset)
+opcijas.add_command(label="Iziet",command=gamewindow.quit)
+
+galvenaIzvelne.add_command(label="Par programmu",command=reset)
 
 
 
