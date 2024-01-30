@@ -1,7 +1,12 @@
+import time
 from tkinter import *
 from PIL import ImageTk, Image
 import random
 from tkinter import messagebox
+#----------------------------------------------------------------------------------
+
+
+
 
 gamewindow=Tk()
 gamewindow.title("Vienādie attēli")
@@ -10,7 +15,7 @@ gamewindow.resizable(1,1)
 
 
 
-myimg1=ImageTk.PhotoImage(Image.open("7.jpg"))
+myimg1=ImageTk.PhotoImage(Image.open("1.jpg"))
 myimg2=ImageTk.PhotoImage(Image.open("2.jpg"))
 myimg3=ImageTk.PhotoImage(Image.open("3.jpg"))
 myimg4=ImageTk.PhotoImage(Image.open("4.jpg"))
@@ -24,31 +29,8 @@ myLabel=Label(image=myimg1)
 
 bgImg=ImageTk.PhotoImage(Image.open("8.jpg"))
 
-
-
-def btnClick(btn,number):
-    global count, correctanswers, answers, answer_dict
-    if btn["image"]=="pyimage8" and count<2:
-        btn["image"]=ImageList[number]
-        count+=1
-        answers.append(number)
-        answer_dict[btn]=ImageList[number]
-    if len(answers)==2:
-        if ImageList[answers[0]]==ImageList[answers[1]]:
-            for key in answer_dict:
-                key["state"]=DISABLED
-        correctanswers+=2
-        if correctanswers==7:
-            messagebox.showinfo("Vienādi attēli","Esi uzminējis")
-    else:
-        messagebox.showinfo("Vienādi attēli","Neesi uzminējis")
-        for key in answer_dict:
-            key["image"]="pyimage8"
-        count=0
-        answers=[]
-        answer_dict={}  
-
-        return 0
+    
+#-----------------------------------------
 
 btn0 = Button(width=200, height=200, image=bgImg,command=lambda: btnClick(btn0,0))
 btn1 = Button(width=200, height=200, image=bgImg,command=lambda: btnClick(btn1,1))
@@ -59,7 +41,7 @@ btn5 = Button(width=200, height=200, image=bgImg,command=lambda: btnClick(btn5,5
 btn6 = Button(width=200, height=200, image=bgImg,command=lambda: btnClick(btn6,6))
 btn7 = Button(width=200, height=200, image=bgImg,command=lambda: btnClick(btn7,7))
 btn8 = Button(width=200, height=200, image=bgImg,command=lambda: btnClick(btn8,8))
-btn9= Button(width=200, height=200, image=bgImg,command=lambda: btnClick(btn9,9))
+btn9 = Button(width=200, height=200, image=bgImg,command=lambda: btnClick(btn9,9))
 
 btn0.grid(row=0, column=0)
 btn1.grid(row=0, column=1)
@@ -72,32 +54,8 @@ btn7.grid(row=1, column=2)
 btn8.grid(row=1, column=3)
 btn9.grid(row=1, column=4)
 
-count=0
-correctanswers=0
-answers=[]
-answer_dict={}
-answerCount=0
 
-def reset():
-    global count, correctAnswers, answers, answer_dict, answerCount
-    btn1.config(state=NORMAL)
-    btn2.config(state=NORMAL)
-    btn3.config(state=NORMAL)
-    btn4.config(state=NORMAL)
-    btn5.config(state=NORMAL)
-    btn6.config(state=NORMAL)
-    btn7.config(state=NORMAL)
-    btn8.config(state=NORMAL)
-
-    btn1["image"]="pyimage1"
-    btn2["image"]="pyimage1"
-    btn3["image"]="pyimage1"
-    btn4["image"]="pyimage1"
-    btn5["image"]="pyimage1"
-    btn6["image"]="pyimage1"
-    btn7["image"]="pyimage1"
-    btn8["image"]="pyimage1"
-
+#-----------------------------------------
 
 random.shuffle(ImageList)
 
@@ -106,6 +64,42 @@ correctanswers=0
 answers=[]
 answer_dict={}
 answerCount=0
+#---------------------------------------------------------------------------------
+
+
+def reset():
+    global count, correctAnswers, answers, answer_dict, answerCount
+    btn0.config(state=NORMAL)
+    btn1.config(state=NORMAL)
+    btn2.config(state=NORMAL)
+    btn3.config(state=NORMAL)
+    btn4.config(state=NORMAL)
+    btn5.config(state=NORMAL)
+    btn6.config(state=NORMAL)
+    btn7.config(state=NORMAL)
+    btn8.config(state=NORMAL)
+    btn9.config(state=NORMAL)
+
+
+    btn1["image"]="pyimage8"
+    btn2["image"]="pyimage8"
+    btn3["image"]="pyimage8"
+    btn4["image"]="pyimage8"
+    btn5["image"]="pyimage8"
+    btn6["image"]="pyimage8"
+    btn7["image"]="pyimage8"
+    btn8["image"]="pyimage8"
+    btn9["image"]="pyimage8"
+
+
+    random.shuffle(ImageList)
+
+    count=0
+    correctanswers=0
+    answers=[]
+    answer_dict={}
+    answerCount=0
+
 
 
 
@@ -116,6 +110,36 @@ def infoLogs():
     apraksts=Label(gamewindow, text="Atmini 2 vienādus attēlus")
     apraksts.grid(row=0, column=0)
     return 0
+
+#----------------------------------------------------------------------------------
+
+
+def btnClick(btn,number):
+    global count, correctAnswers, answers, answer_dict, answerCount
+    if btn["image"]=="pyimage8" and count<2:
+        btn["image"]=ImageList[number]
+        count+=1
+        answers.append(number)
+        answer_dict[btn]=ImageList[number]
+    if len(answers)==2:
+        if ImageList[answers[0]]==ImageList[answers[1]]:
+            for key in answer_dict:
+                key["state"]=DISABLED
+            correctAnswers=+2
+            if correctAnswers==2:
+                correctAnswers=0
+                answerCount+=1
+        else:
+            Tk.update(btn)
+            for key in answer_dict:
+                key["image"]="pyimage8"
+        count=0
+        answers=[]
+        answer_dict={}
+    if answerCount==5:
+        messagebox.showinfo("Sheesh!","You win")
+        reset()
+
 
 
 
@@ -129,114 +153,6 @@ opcijas.add_command(label="Jauna spēle",command=reset)
 opcijas.add_command(label="Iziet",command=gamewindow.quit)
 
 galvenaIzvelne.add_command(label="Par programmu",command=infoLogs)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 gamewindow.mainloop()
