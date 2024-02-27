@@ -23,6 +23,7 @@ myimg5=ImageTk.PhotoImage(Image.open("5.jpg"))
 myimg6=ImageTk.PhotoImage(Image.open("6.jpg"))
 myimg7=ImageTk.PhotoImage(Image.open("7.jpg"))
 
+
 ImageList=[myimg1,myimg1,myimg2,myimg2,myimg3,myimg3,myimg4,myimg4,myimg5,myimg5,myimg6,myimg6,myimg7,myimg7]
 
 myLabel=Label(image=myimg1)
@@ -60,7 +61,7 @@ btn9.grid(row=1, column=4)
 random.shuffle(ImageList)
 
 count=0
-correctanswers=0
+correctAnswers=0
 answers=[]
 answer_dict={}
 answerCount=0
@@ -95,7 +96,7 @@ def reset():
     random.shuffle(ImageList)
 
     count=0
-    correctanswers=0
+    correctAnswers=0
     answers=[]
     answer_dict={}
     answerCount=0
@@ -125,12 +126,13 @@ def btnClick(btn,number):
         if ImageList[answers[0]]==ImageList[answers[1]]:
             for key in answer_dict:
                 key["state"]=DISABLED
-            correctAnswers=+2
+            correctAnswers+=2
             if correctAnswers==2:
                 correctAnswers=0
                 answerCount+=1
         else:
             Tk.update(btn)
+            time.sleep(1.5)
             for key in answer_dict:
                 key["image"]="pyimage8"
         count=0
