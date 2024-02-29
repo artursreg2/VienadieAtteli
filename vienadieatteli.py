@@ -24,7 +24,7 @@ myimg6=ImageTk.PhotoImage(Image.open("6.jpg"))
 myimg7=ImageTk.PhotoImage(Image.open("7.jpg"))
 
 
-ImageList=[myimg1,myimg1,myimg2,myimg2,myimg3,myimg3,myimg4,myimg4,myimg5,myimg5,myimg6,myimg6,myimg7,myimg7]
+ImageList=[myimg1,myimg1,myimg2,myimg2,myimg4,myimg4,myimg6,myimg6,myimg7,myimg7]
 
 myLabel=Label(image=myimg1)
 
@@ -82,6 +82,7 @@ def reset():
     btn9.config(state=NORMAL)
 
 
+    btn0["image"]="pyimage8"
     btn1["image"]="pyimage8"
     btn2["image"]="pyimage8"
     btn3["image"]="pyimage8"
